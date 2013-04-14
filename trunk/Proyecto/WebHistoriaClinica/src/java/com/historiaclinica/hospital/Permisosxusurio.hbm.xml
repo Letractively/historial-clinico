@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-abr-2013 14:38:18 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.historiaclinica.hospital.Permisosxusurio" table="permisosxusurio" catalog="hospital">
+        <composite-id name="id" class="com.historiaclinica.hospital.PermisosxusurioId">
+            <key-property name="idUsurio" type="int">
+                <column name="idUsurio" />
+            </key-property>
+            <key-property name="idPermiso" type="int">
+                <column name="idPermiso" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

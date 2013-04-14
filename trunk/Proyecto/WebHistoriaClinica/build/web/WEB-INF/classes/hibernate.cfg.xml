@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hospital</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">toor</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="com/historiaclinica/hospital/Especializacion.hbm.xml"/>
+    <mapping resource="com/historiaclinica/hospital/Usuario.hbm.xml"/>
+    <mapping resource="com/historiaclinica/hospital/Paciente.hbm.xml"/>
+    <mapping resource="com/historiaclinica/hospital/Clase.hbm.xml"/>
+    <mapping resource="com/historiaclinica/hospital/Parametro.hbm.xml"/>
+    <mapping resource="com/historiaclinica/hospital/Persona.hbm.xml"/>
+    <mapping resource="com/historiaclinica/hospital/Permiso.hbm.xml"/>
+    <mapping resource="com/historiaclinica/hospital/Medico.hbm.xml"/>
+    <mapping resource="com/historiaclinica/hospital/Permisosxusurio.hbm.xml"/>
+    <mapping resource="com/historiaclinica/hospital/Historiaclinica.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
