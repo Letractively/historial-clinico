@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="hospital"/>
+  <table-filter match-name="paciente"/>
+  <table-filter match-name="clase"/>
+  <table-filter match-name="permisosxusurio"/>
+  <table-filter match-name="historiaclinica"/>
+  <table-filter match-name="medico"/>
+  <table-filter match-name="especializacion"/>
+  <table-filter match-name="persona"/>
+  <table-filter match-name="parametro"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="permiso"/>
+</hibernate-reverse-engineering>

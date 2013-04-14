@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-abr-2013 14:38:18 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.historiaclinica.hospital.Persona" table="persona" catalog="hospital">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="tipoDocumento" type="int">
+            <column name="tipoDocumento" not-null="true" />
+        </property>
+        <property name="nroDocumento" type="long">
+            <column name="nroDocumento" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="nombres" type="string">
+            <column name="nombres" length="45" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="25" />
+        </property>
+        <property name="fechaNacimiento" type="timestamp">
+            <column name="fechaNacimiento" length="19" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="45" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="45" />
+        </property>
+        <property name="idUsurio" type="int">
+            <column name="idUsurio" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
