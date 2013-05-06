@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-abr-2013 12:33:29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.modelo.Persona" table="persona" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="tipodocumento" type="int">
+            <column name="tipodocumento" not-null="true" />
+        </property>
+        <property name="nrodocumento" type="long">
+            <column name="nrodocumento" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="nombres" type="string">
+            <column name="nombres" length="45" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="25" />
+        </property>
+        <property name="fechanacimiento" type="date">
+            <column name="fechanacimiento" length="13" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="45" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="45" />
+        </property>
+        <property name="idusurio" type="int">
+            <column name="idusurio" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
