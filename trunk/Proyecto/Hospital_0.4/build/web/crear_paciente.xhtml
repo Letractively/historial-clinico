@@ -1,0 +1,70 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="layout.xhtml">
+    <ui:define name="content">
+        
+        <h1>MODULO ADMINISTRATIVO</h1>
+        <br/>
+        <br/>
+        Ingresar nueva persona
+        <br/>
+        <br/>
+        Elija el tipo de persona que desea ingresar
+        <br/>
+        <br/>
+        <h:form id="pagina">
+            
+            <h:panelGrid columns="2" style="margin-bottom: 10px">
+                
+                <p:commandButton value="medico" icon="ui-icon-person" oncomplete="dialgmedico.show();"/>
+                
+                <p:commandButton value="paciente" icon="ui-icon-person"/>
+            </h:panelGrid>
+            
+            <p:commandButton value="Seleccionar"  />
+        </h:form>
+        
+        <h:form id="emergente"  >
+            <p:dialog header="Nuevo medico" widgetVar="dialgmedico" resizable="false"   
+                showEffect="fade" hideEffect="explode" modal="false">
+                <h:panelGrid id="especializacion" columns="4"  >
+                     
+                    <h:outputText value="Nº de identificacion"/>
+                    <p:inputText style="width: 140px" value="#{persona.persona.nrodocumento}"/>
+                    
+                    <h:outputText value="Tipo de cedula"/>
+                    <p:selectOneMenu style="width: 140px" value="#{persona.persona.tipoPersona}">
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="CC" itemValue="1"/>
+                        <f:selectItem itemLabel="CE" itemValue="2"/>
+                    </p:selectOneMenu>
+                    
+                    <h:outputText value="fecha de nacimiento"/>
+                    <p:calendar value="#{persona.persona.fechanacimiento}" />
+                    <h:outputText value="Nombres"/>
+                    <p:inputText style="width: 140px" value="#{persona.persona.nombres}"/>
+                    
+                    <h:outputText value="Apellidos"/>
+                    <p:inputText style="width: 140px" value="#{persona.persona.apellidos}"/>
+                    <h:outputText value="Direccion"/>
+                    <p:inputText style="width: 140px" value="#{persona.persona.direccion}"/>
+                    
+                    <h:outputText value="Telefono"/>
+                    <p:inputText style="width: 140px" value="#{persona.persona.telefono}"/>
+                    <h:outputText value="Email"/>
+                    <p:inputText style="width: 140px" value="#{persona.persona.email}"/>
+                    
+                    <h:outputText value="ID usuario"/>
+                    <p:inputText style="width: 140px" value="#{persona.persona.idusurio}"/>
+                    <br/>
+                    <p:commandButton value="Siguiente" actionListener="#{persona.insertar(actionEvent)}"/>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+            
+    </ui:define>
+</ui:composition>
