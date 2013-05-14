@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="layout.xhtml">
+    <ui:define name="content">
+        <h:form id="new_paciente">
+            
+            <p:panel id="panel" header="Personas inscritas al hospital">
+                 
+                 <p:dataTable var="pers" value="#{persona.personas}">
+                     <p:column headerText="identificacion" style="width: 24%">
+                         <h:outputText  value="#{pers.nrodocumento}"/>
+                     </p:column>
+                     
+                     <p:column headerText="Nombre" style="width: 24%">
+                         <h:outputText value="#{pers.nombres}"/>
+                     </p:column>
+                     
+                     <p:column headerText="Apellido" style="width: 24%">
+                         <h:outputText value="#{pers.nombres}"/>
+                     </p:column>
+                     
+                     <p:column style="width: 1%">
+                         <p:commandButton icon="ui-icon-search"/>
+                     </p:column>
+                 </p:dataTable>
+            
+             <p:panel id="panel" header="Nuevo Cliente">
+                 
+                 <p:dialog  header="Detalle de la persona" widgetVar="PersonaDialog" resizable="false" id="PersDialg"
+                           showEffect="fade" hideEffect="explode" modal="true">
+                     <h:panelGrid id="PersonaDialog" columns="2" cellpadding="4" style="margin: 0 auto">
+                         <f:facet name="header">
+                             Informacion general de la persona PRUEBA
+                         </f:facet>
+                         
+                         <h:outputText value="Id"/>
+                         <h:outputText value="#{pers.id}"/>
+                         
+                         <h:outputText value="Tipo de indentifiacion"/>
+                         <h:outputText value="#{pers.tipodocumento}"/>
+                         
+                         <h:outputText value="Numero de identificacion"/>
+                         <h:outputText value="#{pers.nrodocumento}"/>
+                         
+                         <h:outputText value="Nombres"/>
+                         <h:outputText value="#{pers.nombres}"/>
+                         
+                         <h:outputText value="Apellidos"/>
+                         <h:outputText value="#{pers.apellidos}"/>
+                         
+                         <h:outputText value="Fecha de nacimiento"/>
+                         <h:outputText value="#{pers.fechanacimiento}"/>
+                         
+                         <h:outputText value="Direccion"/>
+                         <h:outputText value="#{pers.direccion}"/>
+                         
+                         <h:outputText value="Fecha de nacimiento"/>
+                         <h:outputText value="#{pers.fechanacimiento}"/>
+                     </h:panelGrid>
+                 </p:dialog>
+               
+            </p:panel>
+        </h:form>
+        
+        <h:form id="emergente">
+            <p:dialog header="Nuevo medico" widgetVar="dialgmedico" resizable="false"   
+                showEffect="fade" hideEffect="explode" modal="true">
+                <h:panelGrid id="especializacion" columns="4">
+                    <h:outputText value="Numero de identificacion"/>
+                    <h:outputText value="fecha de nacimiento"/>
+
+                    <p:inputText style="width: 180px"/>
+                    <p:calendar />
+                </h:panelGrid>
+            </p:dialog>
+        </h:form><p:dialog  header="Detalle de la persona" widgetVar="PersonaDialog" resizable="false" id="PersDialg"
+                           showEffect="fade" hideEffect="explode" modal="true">
+                     <h:panelGrid id="PersonaDialog" columns="2" cellpadding="4" style="margin: 0 auto">
+                         <f:facet name="header">
+                             Informacion general de la persona
+                         </f:facet>
+                         
+                         <h:outputText value="Id"/>
+                         <h:outputText value="#{pers.id}"/>
+                         
+                         <h:outputText value="Tipo de indentifiacion"/>
+                         <h:outputText value="#{pers.tipodocumento}"/>
+                         
+                         <h:outputText value="Numero de identificacion"/>
+                         <h:outputText value="#{pers.nrodocumento}"/>
+                         
+                         <h:outputText value="Nombres"/>
+                         <h:outputText value="#{pers.nombres}"/>
+                         
+                         <h:outputText value="Apellidos"/>
+                         <h:outputText value="#{pers.apellidos}"/>
+                         
+                         <h:outputText value="Fecha de nacimiento"/>
+                         <h:outputText value="#{pers.fechanacimiento}"/>
+                         
+                         <h:outputText value="Direccion"/>
+                         <h:outputText value="#{pers.direccion}"/>
+                         
+                         <h:outputText value="Fecha de nacimiento"/>
+                         <h:outputText value="#{pers.fechanacimiento}"/>
+                     </h:panelGrid>
+                 </p:dialog>
+               
+            </p:panel>
+        </h:form>
+        
+        <h:form id="emergente">
+            <p:dialog header="Nuevo medico" widgetVar="dialgmedico" resizable="false"   
+                showEffect="fade" hideEffect="explode" modal="true">
+                <h:panelGrid id="especializacion" columns="4">
+                    <h:outputText value="Numero de identificacion"/>
+                    <h:outputText value="fecha de nacimiento"/>
+
+                    <p:inputText style="width: 180px"/>
+                    <p:calendar />
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+                 
+                 
+               
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>
