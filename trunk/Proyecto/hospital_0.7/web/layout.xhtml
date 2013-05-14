@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <style type="text/css">
+                body{
+                    font-size: 11px;
+                }
+            </style>
+            <f:facet name="frist">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Hospital general</title>
+            </f:facet>
+        </h:head>
+        
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="220" resizable="false" collapsible="true" >
+                    <center><img src="Imagenes/header2.jpg"/></center>
+                </p:layoutUnit>     
+                
+                <p:layoutUnit position="west" size="220" style="width: 150px">
+                    <h:form >
+                        <p:panelMenu style="width: 190px; ">
+                            <p:submenu label="Usuarios" >
+                                <p:menuitem value="Solicitar cita medica" icon="ui-icon-disk"/>
+                                <p:menuitem value="pasientes inscritos" icon="ui-icon-bookmark"/>
+                            </p:submenu>
+                            
+                            <p:submenu label="Administracion">
+                                    <p:menuitem value="Medicos" icon="ui-icon-bookmark" outcome="crear_medico.xhtml" />
+                                    <p:menuitem value="Paciente" icon="ui-icon-bookmark" />
+                            </p:submenu>
+                            
+                            <p:submenu label="opcion 3">
+                                
+                            </p:submenu>
+                        </p:panelMenu>
+                    </h:form>  
+
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="center">
+                    <ui:insert name="content">
+                        Welcome
+                    </ui:insert>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+    
+</html>
