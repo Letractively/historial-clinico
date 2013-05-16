@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="layout.xhtml">
+    <ui:define name="content">
+        <h:body>
+            <h:form id="form">  
+
+                <p:panel header="Cambio de Clave">  
+                    <p:messages id="messages" showDetail="true" autoUpdate="true"/>  
+
+                    <h:panelGrid columns="2" id="igualClave" >  
+                        <h:outputLabel for="clv1" value="Clave nueva: " />  
+                        <p:password id="clv1" value="#{clave.claveNueva}" feedback="true"
+                                    match="clv2" label="Clave nueva" required="true"
+                                    promptLabel="Clave nueva" weakLabel="Bajo"
+                                    goodLabel="Medio" strongLabel="Alto" inline="true" />
+
+                        <h:outputLabel for="clv2" value="Confirma la clave nueva: " />  
+                        <p:password id="clv2" value="#{clave.claveNueva}" feedback="true"
+                                    label="Clave nueva" required="true"
+                                    promptLabel="Confirma la clave nueva" weakLabel="Bajo"
+                                    goodLabel="Medio" strongLabel="Alto" inline="true" /> 
+
+                        <f:facet name="footer">  
+                            <p:commandButton id="loginButton" value="Ingresar" update=":form"   
+                                             actionListener="#{clave.cambiarClave}"   
+                                             oncomplete="handleLoginRequest(xhr, status, args)"/>  
+                        </f:facet>
+                    </h:panelGrid>
+                </p:panel>
+            </h:form> 
+        </h:body>
+    </ui:define>
+</ui:composition>
