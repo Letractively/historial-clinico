@@ -47,136 +47,70 @@
                 
                 <p:layoutUnit position="center">
                     <ui:insert name="content">
-                        
-                        
-                        <h:form id="NewPaciente">
+                        <h1>Hola mundo</h1>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h:form>
+                            <p:commandButton value="Paciente" icon="ui-icon-person" oncomplete="dialgpaciente.show();"/>
+                        </h:form>
+                        <h:form id="form">  
+                            
+    <p:growl id="msgs" showDetail="true" />  
+  
+    <p:dataTable id="cars" var="car" value="#{persona.personas}">  
+  
+        <p:column headerText="Numero" style="width:24%">  
+            <h:outputText value="#{car.nrodocumento}" />  
+        </p:column>  
+  
+        <p:column headerText="nombre" style="width:24%">  
+            <h:outputText value="#{car.nombres}" />  
+        </p:column>  
+  
+          
+  
+        <p:column style="width:4%">  
+            <p:commandButton id="selectButton" update=":form:display" oncomplete="carDialog.show()" 
+                             actionListener="#{persona.prepararActualizar(car.id)}" icon="ui-icon-search" title="View"/>  
+                
             
-                            <p:dataTable var="pers" value="#{persona.personas}">
-                                <f:facet name="header">
-                                    Pacientes inscritos al Hospital
-                                </f:facet>
-                                <p:column headerText="identificacion" style="width: 24%">
-                                    <h:outputText  value="#{pers.nrodocumento}"/>
-                                </p:column>
-
-                                <p:column headerText="Nombre" style="width: 24%">
-                                    <h:outputText value="#{pers.nombres}"/>
-                                </p:column>
-
-                                <p:column headerText="Apellido" style="width: 24%">
-                                    <h:outputText value="#{pers.apellidos}"/>
-                                </p:column>
-
-                                <p:column headerText="Fecha de nacimiento" style="width: 24%">
-                                    <h:outputText value="#{pers.fechanacimiento}"/>
-                                </p:column>
-
-                                <p:column style="width: 1%">
-                                    <p:commandButton  actionListener="#{persona.prepararActualizar(pers.nrodocumento)}" oncomplete="mostrarPaciente.show();" 
-                                                     icon="ui-icon-search"/>
-                                </p:column>
-                            </p:dataTable>
-                        </h:form>
-
-                        <h:form id="insertar">
-
-                            <p:dialog id="paciente" header="Nuevo medico" widgetVar="dialgpaciente" resizable="false"   
-                                showEffect="fade" hideEffect="explode" modal="false">
-                                <p:growl id="growl" showDetail="true" sticky="true" />  
-                                <p:panelGrid  columns="4"  >
-
-                                    <h:outputText value="Nº de identificacion"/>
-                                    <p:inputText style="width: 140px" value="#{persona.persona.nrodocumento}"/>
-
-                                    <h:outputText value="Tipo de cedula"/>
-                                    <p:selectOneMenu style="width: 140px" value="#{persona.persona.tipodocumento}">
-                                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
-                                        <f:selectItem itemLabel="CC" itemValue="1"/>
-                                        <f:selectItem itemLabel="CE" itemValue="2"/>
-                                    </p:selectOneMenu>
-
-                                    <h:outputText value="fecha de nacimiento"/>
-
-                                    <p:calendar value="#{persona.persona.fechanacimiento}" />
-                                    <h:outputText value="Nombres"/>
-                                    <p:inputText style="width: 140px" value="#{persona.persona.nombres}"/>
-
-                                    <h:outputText value="Apellidos"/>
-                                    <p:inputText style="width: 140px" value="#{persona.persona.apellidos}"/>
-                                    <h:outputText value="Direccion"/>
-                                    <p:inputText style="width: 140px" value="#{persona.persona.direccion}"/>
-
-                                    <h:outputText value="Telefono"/>
-                                    <p:inputText style="width: 140px" value="#{persona.persona.telefono}"/>
-                                    <h:outputText value="Email"/>
-                                    <p:inputText style="width: 140px" value="#{persona.persona.email}"/>
-
-                                    <h:outputText value="ID usuario"/>
-                                    <p:inputText style="width: 140px" value="#{persona.persona.idusurio}"/>
-                                    <br/>
-                                    <p:commandButton value="Siguiente" actionListener="#{persona.insertar(actionEvent)}" oncomplete="dlgUsuario.show();"/>
-                                </p:panelGrid>
-                            </p:dialog>
-                        </h:form>
-
-
-
-
-
-
-                        <h:form id="Usuario">
-                            <p:dialog header="Asignacion de usuario" widgetVar="dlgUsuario" resizable="false"   
-                                      showEffect="fade" hideEffect="explode" modal="false">
-                                <h:panelGrid id="display" columns="2">
-                                    <h:outputText value="#{persona.persona.idusurio}"/>
-                                    <p:separator/>
-
-                                    <h:outputText value="Ususario"/>
-                                    <p:inputText style="140px" value="#{usuario.usuario.login}"/>
-
-                                    <h:outputText value="Clave"/>
-                                    <p:inputText style="140px" value="#{usuario.usuario.clave}"/>
-
-                                    <h:outputText value="Estado"/>
-                                    <p:inputText style="140px" value="#{usuario.usuario.clave}"/>
-
-                                    <p:selectOneMenu style="width: 140px" value="#{usuario.usuario.estado}">
-                                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
-                                        <f:selectItem itemLabel="Activo" itemValue="1"/>
-                                        <f:selectItem itemLabel="Suspendido" itemValue="2"/>
-                                        <f:selectItem itemLabel="Cerrado" itemValue="3"/>
-                                    </p:selectOneMenu>
-
-                                    <p:commandButton value="Finalizar" actionListener="#{especializacionController.insertar()}" 
-                                                      oncomplete="dlgUsuarios.hide()"/>
-                                </h:panelGrid>
-                            </p:dialog>
-                        </h:form>
-
-                        <h:form id="mostrarG">
-                            <p:dialog id="mostrar" header="Informacion general del medico" widgetVar="mostrarPaciente" resizable="false"   
-                                      showEffect="fade" hideEffect="explode" modal="false">
-                                <h:panelGrid id="dlgPaciente" columns="2">
-                                    <h:outputText value="Tipo de identificacion:"/> 
-                                    <h:outputText value="#{personaBean.persona.tipodocumento}" style="font-weight: bold"/>
-                                    <h:outputText value="Nº identificacion:"/>
-                                    <h:outputText value="#{persona.persona.nrodocumento}" style="font-weight: bold"/>                                 
-                                    <h:outputText value="Nombre:"/>
-                                    <h:outputText value="#{persona.persona.nombres}" style="font-weight: bold"/>
-                                    <h:outputText value="Apellido:"/>
-                                    <h:outputText value="#{persona.persona.apellidos}" style="font-weight: bold"/>
-                                    <h:outputText value="Usuario:"/>
-                                    <h:outputText value="#{usuario.usuario.login}"/>
-                                    <h:outputText value="Telefono:"/>
-                                    <h:outputText value="#{persona.persona.telefono}" style="font-weight: bold"/>
-                                    <h:outputText value="Direccion:"/>
-                                    <h:outputText value="#{persona.persona.direccion}" style="font-weight: bold"/>
-                                    <h:outputText value="Email:"/>
-                                    <h:outputText value="#{persona.persona.email}" style="font-weight: bold"/>
-                                    <p:commandButton value="ok"  oncomplete="mostrarPaciente.hide();"/>
-                                </h:panelGrid>
-                            </p:dialog>
-                        </h:form>
+        </p:column>  
+  
+    </p:dataTable>  
+  
+    <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" id="carDlg"  
+                showEffect="fade" hideEffect="explode" modal="false">  
+  
+        <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">  
+  
+            
+  
+            <h:outputText value="Tipo de identificacion:"/> 
+                    <h:outputText value="#{personaBean.persona.tipodocumento}" style="font-weight: bold"/>
+                    <h:outputText value="Nº identificacion:"/>
+                    <h:outputText value="#{persona.persona.nrodocumento}" style="font-weight: bold"/>                                 
+                    <h:outputText value="Nombre:"/>
+                    <h:outputText value="#{persona.persona.nombres}" style="font-weight: bold"/>
+                    <h:outputText value="Apellido:"/>
+                    <h:outputText value="#{persona.persona.apellidos}" style="font-weight: bold"/>
+                    <h:outputText value="Usuario:"/>
+                    <h:outputText value="#{usuario.usuario.login}"/>
+                    <h:outputText value="Telefono:"/>
+                    <h:outputText value="#{persona.persona.telefono}" style="font-weight: bold"/>
+                    <h:outputText value="Direccion:"/>
+                    <h:outputText value="#{persona.persona.direccion}" style="font-weight: bold"/>
+                    <h:outputText value="Email:"/>
+                    <h:outputText value="#{persona.persona.email}" style="font-weight: bold"/>  
+  
+  
+            
+  
+        </h:panelGrid>  
+  
+    </p:dialog>  
+  
+</h:form>
                         
                     </ui:insert>
                 </p:layoutUnit>

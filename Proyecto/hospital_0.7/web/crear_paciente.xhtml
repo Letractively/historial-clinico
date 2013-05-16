@@ -12,6 +12,16 @@
                 ><!-->-->
     <ui:define name="content">
     
+        <h1>MODULO ADMINISTRATIVO</h1>
+        <br/>
+        <br/>
+        Ingresar nuevo paciente
+        <br/>
+        <br/>
+        <p:commandButton value="Paciente" icon="ui-icon-person" oncomplete="dialgpaciente.show();"/>
+        
+        <br/>
+        <br/>
         <h:form id="form">  
   
     <p:growl id="msgs" showDetail="true" />  
@@ -38,7 +48,7 @@
     </p:dataTable>  
   
     <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" id="carDlg"  
-                showEffect="fade" hideEffect="explode" modal="true">  
+                showEffect="fade" hideEffect="explode" modal="false">  
   
         <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">  
   
