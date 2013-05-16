@@ -7,6 +7,7 @@ package com.implementacion;
 import com.util.HibernateUtil;
 import com.interfaces.interfaz_persona;
 import com.modelo.Persona;
+import com.modelo.Paciente;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -77,15 +78,16 @@ public class implemetacion_persona implements interfaz_persona{
 
     @Override
     public List<Persona> buscarPersonas() {
-        
         Session session;
         session = HibernateUtil.getSessionFactory().openSession();
         return  session.createQuery("from Persona").list();
     }
-
-   
-   
-
-   
     
+    @Override
+    public List<Persona> buscarPersonasPacientes() {
+        Session session;
+        session = HibernateUtil.getSessionFactory().openSession();
+        return  session.createQuery("from Persona e "
+                + "where e.id IN (select a.idpersona from Paciente a)").list();
+    }
 }
