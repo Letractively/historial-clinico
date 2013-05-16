@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
  *
  * @author carlos
  */
-@ManagedBean //(name="persona")
+@ManagedBean (name="persona")
 @SessionScoped
     public class PersonaBean implements Serializable{
     
@@ -48,10 +48,10 @@ import javax.faces.context.FacesContext;
         System.out.print("Exito");
     }
     
-    public void prepararActualizar(Integer id){
-        System.out.print("hOLAAAAAAAAAA "+id);
+    public void prepararActualizar(Integer nrodocumento){
+        System.out.print("hOLAAAAAAAAAA "+nrodocumento);
         interfaz_persona ip=new implemetacion_persona();
-        persona=ip.buscarId(id);
+        persona=ip.buscarId(nrodocumento);
         //persona=new Persona();
         System.out.print("Id"+persona.getId()+"numerodoc"+persona.getNrodocumento());
     }
@@ -75,6 +75,7 @@ import javax.faces.context.FacesContext;
     public List<Persona> getPersonas() {
         interfaz_persona ip=new implemetacion_persona();
         personas=ip.buscarPersonas();
+     System.out.print("Aqui"+personas.size());   
         return personas;
     }
     
