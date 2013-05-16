@@ -45,7 +45,7 @@ public class UsuarioBean {
 
     public void login(ActionEvent actionEvent) {
         RequestContext context = RequestContext.getCurrentInstance();
-        FacesMessage msg = null;
+        FacesMessage msg;
 
         UsuarioDao usuarioDao = new UsuarioDaoImpl();
         usuario = usuarioDao.buscarPorUsuario(usuario);
