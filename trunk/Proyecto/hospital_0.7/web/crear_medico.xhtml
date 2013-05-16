@@ -75,7 +75,7 @@
                     <h:outputText value="ID usuario"/>
                     <p:inputText style="width: 140px" value="#{persona.persona.idusurio}"/>
                     <br/>
-                    <p:commandButton value="Siguiente" actionListener="#{persona.insertar(actionEvent)}" oncomplete="dlgesp.show();"/>
+                    <p:commandButton value="Siguiente" actionListener="#{persona.insertar(actionEvent)}" oncomplete="dlgesp.show(); dialgmedico.hide();"/>
                 </p:panelGrid>
             </p:dialog>
         </h:form>
