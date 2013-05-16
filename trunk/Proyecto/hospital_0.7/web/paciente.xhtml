@@ -57,22 +57,21 @@
                         <h:form id="form">  
                             
     <p:growl id="msgs" showDetail="true" />  
-  
-    <p:dataTable id="cars" var="car" value="#{persona.personas}">  
-  
+    <p:dataTable id="cars" var="perso" value="#{personaBean.personasPacientes}">  
+        
         <p:column headerText="Numero" style="width:24%">  
-            <h:outputText value="#{car.nrodocumento}" />  
+            <h:outputText value="#{perso.nrodocumento}" />  
         </p:column>  
   
         <p:column headerText="nombre" style="width:24%">  
-            <h:outputText value="#{car.nombres}" />  
+            <h:outputText value="#{perso.nombres}" />  
         </p:column>  
   
           
   
         <p:column style="width:4%">  
             <p:commandButton id="selectButton" update=":form:display" oncomplete="carDialog.show()" 
-                             actionListener="#{persona.prepararActualizar(car.id)}" icon="ui-icon-search" title="View"/>  
+                             actionListener="#{personaBean.prepararActualizar(car.id)}" icon="ui-icon-search" title="View"/>  
                 
             
         </p:column>  
@@ -89,9 +88,9 @@
             <h:outputText value="Tipo de identificacion:"/> 
                     <h:outputText value="#{personaBean.persona.tipodocumento}" style="font-weight: bold"/>
                     <h:outputText value="Nº identificacion:"/>
-                    <h:outputText value="#{persona.persona.nrodocumento}" style="font-weight: bold"/>                                 
+                    <h:outputText value="#{personaBean.persona.nrodocumento}" style="font-weight: bold"/>                                 
                     <h:outputText value="Nombre:"/>
-                    <h:outputText value="#{persona.persona.nombres}" style="font-weight: bold"/>
+                    <h:outputText value="#{personaBean.persona.nombres}" style="font-weight: bold"/>
                     <h:outputText value="Apellido:"/>
                     <h:outputText value="#{persona.persona.apellidos}" style="font-weight: bold"/>
                     <h:outputText value="Usuario:"/>

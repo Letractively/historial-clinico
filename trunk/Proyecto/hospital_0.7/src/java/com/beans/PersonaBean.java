@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
  *
  * @author carlos
  */
-@ManagedBean (name="persona")
+@ManagedBean (name="personaBean")
 @SessionScoped
     public class PersonaBean implements Serializable{
     
@@ -72,10 +72,9 @@ import javax.faces.context.FacesContext;
         this.persona = persona;
     }
 
-    public List<Persona> getPersonas() {
+    public List<Persona> getPersonasPacientes() {
         interfaz_persona ip=new implemetacion_persona();
-        personas=ip.buscarPersonas();
-     System.out.print("Aqui"+personas.size());   
+        personas=ip.buscarPersonasPacientes();
         return personas;
     }
     
