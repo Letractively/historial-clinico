@@ -19,11 +19,9 @@ public class HibernateUtil {
     private static final SessionFactory sessionFactory;
     
     static {
-        System.out.print("entro");
         try {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
             // config file.
-            
             sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
         } catch (Throwable ex) {
             // Log the exception. 
