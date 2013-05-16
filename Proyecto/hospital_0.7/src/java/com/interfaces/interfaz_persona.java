@@ -19,5 +19,6 @@ public interface interfaz_persona {
     public void eliminar(Persona persona);
     public Persona buscarId(Integer id);
     public List<Persona> buscarPersonas();
+    public List<Persona> buscarPersonasPacientes();
    
 }

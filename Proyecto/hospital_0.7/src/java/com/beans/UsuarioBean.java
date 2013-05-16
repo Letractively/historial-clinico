@@ -19,13 +19,13 @@ import org.primefaces.context.RequestContext;
  *
  * @author Oscar Rada
  */
-@ManagedBean(name="usuarioBean")
+@ManagedBean(name = "usuarioBean")
 @RequestScoped
 public class UsuarioBean {
 
     private Usuario usuario;
     boolean loggedIn = false;
-    
+
     /**
      * Creates a new instance of UsuarioBean
      */
@@ -33,7 +33,7 @@ public class UsuarioBean {
     }
 
     public Usuario getUsuario() {
-        if(usuario == null){
+        if (usuario == null) {
             usuario = new Usuario();
         }
         return usuario;
@@ -42,39 +42,45 @@ public class UsuarioBean {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
-    public void login(ActionEvent actionEvent) {  
-        RequestContext context = RequestContext.getCurrentInstance();  
+
+    public void login(ActionEvent actionEvent) {
+        RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
-          
+
         UsuarioDao usuarioDao = new UsuarioDaoImpl();
         usuario = usuarioDao.buscarPorUsuario(usuario);
-        
-        if(usuario != null) {  
-            if(usuario.getEstado() == 1){
+
+        if (usuario != null) {
+            if (usuario.getEstado() == 1) {
                 loggedIn = true;
                 msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido ", usuario.getLogin());
-            }else{
+                HttpSession sesion = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+                sesion.setAttribute("Usuario", usuario);
+            } else {
                 loggedIn = false;
                 msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario Inactivo", "El usuario "
-                        +usuario.getLogin()+" está inactivo");
+                        + usuario.getLogin() + " está inactivo");
             }
-        } else {  
+        } else {
             loggedIn = false;
-            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error de Usuario", "Contraseña Invalida");  
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error de Usuario", "Contraseña Invalida");
         }
-        
-        FacesContext.getCurrentInstance().addMessage(null, msg);  
-        context.addCallbackParam("loggedIn", loggedIn);  
-        if (loggedIn)
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        context.addCallbackParam("loggedIn", loggedIn);
+        if (loggedIn) {
             context.addCallbackParam("view", "layout.xhtml");
+        }
     }
-    
+
     public void logout() {
-        HttpSession session;
-        session = (HttpSession) FacesContext.getCurrentInstance()
-                .getExternalContext().getSession(false);
-        session.invalidate();
+        try {
+            HttpSession session;
+            session = (HttpSession) FacesContext.getCurrentInstance()
+                    .getExternalContext().getSession(true);
+            session.invalidate();
+        } catch (Exception e) {
+        }
         loggedIn = false;
     }
 }
