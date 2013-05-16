@@ -34,13 +34,14 @@
                 </p:column>
 
                 <p:column style="width: 1%">
-                    <p:commandButton oncomplete="mostrarTodo.show();" icon="ui-icon-search"/>
+                    <p:commandButton update=":pagina" actionListener="#{persona.prepararActualizar(pers.id)}" oncomplete="mostrarMedico.show();" 
+                                      icon="ui-icon-search"/>
                 </p:column>
             </p:dataTable>
             
        
             
-            <p:dialog id="medico" header="Nuevo medico" widgetVar="dialgmedico" resizable="false"   
+            <p:dialog id="medico" header="Nuevo medico" widgetVar="dialgmedico" resizable="false"
                 showEffect="fade" hideEffect="explode" modal="false">
                 <p:growl id="growl" showDetail="true" sticky="true" />  
                 <p:panelGrid  columns="4"  >
@@ -95,7 +96,7 @@
         </h:form>
         
         <h:form id="mostrarG">
-            <p:dialog id="mostrar" header="Informacion general del medico" widgetVar="mostrarTodo" resizable="false"   
+            <p:dialog id="mostrar" header="Informacion general del medico" widgetVar="mostrarMedico" resizable="false"   
                       showEffect="fade" hideEffect="explode" modal="false">
                 <h:panelGrid columns="2">
                     <h:outputText value="Tipo de identificacion:"/>

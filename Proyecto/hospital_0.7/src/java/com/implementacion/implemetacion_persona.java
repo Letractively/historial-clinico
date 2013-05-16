@@ -26,11 +26,11 @@ public class implemetacion_persona implements interfaz_persona{
         try {
             session.beginTransaction();
             System.out.print("persona "+persona);
-            
             session.save(persona);
-            
             session.beginTransaction().commit();
         } catch (Exception e) {
+            System.out.print("Error en inserta: "+e.getMessage());
+            session.beginTransaction().rollback();
         
         }
         
@@ -51,6 +51,8 @@ public class implemetacion_persona implements interfaz_persona{
             session.update(persona);
             session.beginTransaction().commit();
         } catch (Exception e) {
+            System.out.print("Error en actualizar: "+e.getMessage());
+            session.beginTransaction().rollback();
         }
     }
 
@@ -69,6 +71,7 @@ public class implemetacion_persona implements interfaz_persona{
     @Override
     public Persona buscarId(Integer id) {
         Session session=HibernateUtil.getSessionFactory().openSession();
+        //System.out.print("hOLAAAAAAAAAA");
         return (Persona) session.load(Persona.class, id);
     }
 
