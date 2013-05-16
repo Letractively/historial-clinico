@@ -11,7 +11,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -19,6 +19,12 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/layout.xhtml</welcome-file>
+        <welcome-file>index.jsf</welcome-file>
     </welcome-file-list>
+    
+    <!-- Tema de Primefaces -->
+    <context-param>
+            <param-name>primefaces.THEME</param-name>
+            <param-value>glass-x</param-value>
+    </context-param>
 </web-app>
