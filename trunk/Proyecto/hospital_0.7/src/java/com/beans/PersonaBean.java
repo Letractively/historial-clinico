@@ -21,9 +21,9 @@ import javax.faces.context.FacesContext;
  *
  * @author carlos
  */
-@ManagedBean (name="persona")
+@ManagedBean //(name="persona")
 @SessionScoped
-public class PersonaBean implements Serializable{
+    public class PersonaBean implements Serializable{
     
     private Persona persona;
     private List<Persona> personas;
@@ -35,7 +35,7 @@ public class PersonaBean implements Serializable{
         persona=new Persona();
     }
     
-    public void prepararInsertar(ActionEvent actionEvent){
+    public void prepararInsertar(){
         persona=new Persona();
     }
     
@@ -49,11 +49,14 @@ public class PersonaBean implements Serializable{
     }
     
     public void prepararActualizar(Integer id){
+        System.out.print("hOLAAAAAAAAAA "+id);
         interfaz_persona ip=new implemetacion_persona();
         persona=ip.buscarId(id);
+        //persona=new Persona();
+        System.out.print("Id"+persona.getId()+"numerodoc"+persona.getNrodocumento());
     }
     
-    public void actualizar(ActionEvent actionEvent){
+    public void actualizar(){
         interfaz_persona ip=new implemetacion_persona();
         ip.actualizar(persona);
         FacesContext context = FacesContext.getCurrentInstance();  

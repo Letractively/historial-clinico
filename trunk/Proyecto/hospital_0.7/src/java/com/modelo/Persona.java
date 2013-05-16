@@ -20,6 +20,7 @@ public class Persona  implements java.io.Serializable {
      private String telefono;
      private String direccion;
      private Integer idusurio;
+    private Persona persona;
 
     public Persona() {
     }
@@ -40,7 +41,14 @@ public class Persona  implements java.io.Serializable {
        this.direccion = direccion;
        this.idusurio = idusurio;
     }
-   
+   public Persona getPersona(int id, Integer tipodocumento, Long nrodocumento, String nombres, String apellidos, String email, Date fechanacimiento, String telefono, String direccion, Integer idusurio, Persona persona){
+         return persona;
+       
+   }
+   public void setPersona(int id, Integer tipodocumento, Long nrodocumento, String nombres, String apellidos, String email, Date fechanacimiento, String telefono, String direccion, Integer idusurio, Persona persona){
+         this.persona=persona;
+       
+   }
     public int getId() {
         return this.id;
     }
