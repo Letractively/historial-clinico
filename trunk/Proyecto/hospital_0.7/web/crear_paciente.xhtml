@@ -26,7 +26,7 @@
   
     <p:growl id="msgs" showDetail="true" />  
   
-    <p:dataTable id="cars" var="car" value="#{persona.personas}">  
+    <p:dataTable id="cars" var="car" value="#{personaBean.personas}">  
   
         <p:column headerText="Numero" style="width:24%">  
             <h:outputText value="#{car.nrodocumento}" />  
@@ -34,10 +34,8 @@
   
         <p:column headerText="nombre" style="width:24%">  
             <h:outputText value="#{car.nombres}" />  
-        </p:column>  
-  
-          
-  
+        </p:column>
+        
         <p:column style="width:4%">  
             <p:commandButton id="selectButton" update=":form:display" oncomplete="carDialog.show()" 
                              actionListener="#{personaController.prepararActualizar(car.id)}" icon="ui-icon-search" title="View"/>  
