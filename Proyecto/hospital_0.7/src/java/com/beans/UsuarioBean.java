@@ -69,8 +69,10 @@ public class UsuarioBean {
         if (loggedIn)
             context.addCallbackParam("view", "layout.xhtml");
     }
+    
     public void logout() {
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+        HttpSession session;
+        session = (HttpSession) FacesContext.getCurrentInstance()
                 .getExternalContext().getSession(false);
         session.invalidate();
         loggedIn = false;

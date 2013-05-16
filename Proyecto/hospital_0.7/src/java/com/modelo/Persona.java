@@ -46,7 +46,7 @@ public class Persona  implements java.io.Serializable {
        
    }
    public void setPersona(int id, Integer tipodocumento, Long nrodocumento, String nombres, String apellidos, String email, Date fechanacimiento, String telefono, String direccion, Integer idusurio, Persona persona){
-         this.persona=persona;
+         this.setPersona(persona);
        
    }
     public int getId() {
@@ -118,6 +118,20 @@ public class Persona  implements java.io.Serializable {
     
     public void setIdusurio(Integer idusurio) {
         this.idusurio = idusurio;
+    }
+
+    /**
+     * @return the persona
+     */
+    public Persona getPersona() {
+        return persona;
+    }
+
+    /**
+     * @param persona the persona to set
+     */
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
 
