@@ -47,69 +47,178 @@
                 
                 <p:layoutUnit position="center">
                     <ui:insert name="content">
-                        <h1>Hola mundo</h1>
+                        <h1>Modulo admistrativo de pacientes</h1>
                         <br/>
                         <br/>
                         <br/>
                         <h:form>
-                            <p:commandButton value="Paciente" icon="ui-icon-person" oncomplete="dialgpaciente.show();"/>
+                            Ingresar nuevo paciente<p:commandButton value="Paciente" icon="ui-icon-person" oncomplete="dialgpaciente.show();"/>
                         </h:form>
+                        <br/>
+                        <br/>
+                        <br/>
                         <h:form id="form">  
-                            
-    <p:growl id="msgs" showDetail="true" />  
-    <p:dataTable id="cars" var="perso" value="#{personaBean.personasPacientes}">  
-        
-        <p:column headerText="Numero" style="width:24%">  
-            <h:outputText value="#{perso.nrodocumento}" />  
-        </p:column>  
+                            <p:dataTable id="cars" var="perso" value="#{personaBean.personasPacientes}">
+                                <p:column headerText="Numero" style="width:24%">  
+                                    <h:outputText value="#{perso.nrodocumento}" />  
+                                </p:column>  
   
-        <p:column headerText="nombre" style="width:24%">  
-            <h:outputText value="#{perso.nombres}" />  
-        </p:column>  
+                                <p:column headerText="nombre" style="width:24%">  
+                                    <h:outputText value="#{perso.nombres}" />  
+                                </p:column>  
   
-          
+                                  <p:column style="width:4%">  
+                                <p:commandButton id="selectButton"  oncomplete="carDialog.show()" 
+                                        actionListener="#{personaBean.prepararActualizar(car.id)}" icon="ui-icon-search" title="View"/>      
+                                </p:column>  
+                            </p:dataTable>  
   
-        <p:column style="width:4%">  
-            <p:commandButton id="selectButton" update=":form:display" oncomplete="carDialog.show()" 
-                             actionListener="#{personaBean.prepararActualizar(car.id)}" icon="ui-icon-search" title="View"/>  
-                
-            
-        </p:column>  
+                            <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" id="carDlg"  
+                                showEffect="fade" hideEffect="explode" modal="false">
+                                <p:dataTable  var="car" value="#{persona.personas}">  
+                                    <p:column headerText="Numero" style="width:24%">  
+                                        <h:outputText value="#{car.nrodocumento}" />  
+                                    </p:column>  
+
+                                    <p:column headerText="nombre" style="width:24%">  
+                                        <h:outputText value="#{car.nombres}" />  
+                                    </p:column>  
+
+                                    <p:column style="width:4%">  
+                                        <p:commandButton id="selectButton"  oncomplete="carDialog.show()" 
+                                                actionListener="#{persona.prepararActualizar(car.id)}" icon="ui-icon-search" title="View"/>
+                                        <p:commandButton   actionListener="#{persona.prepararActualizar(car.id)}" oncomplete="dialgedit.show()" 
+                                                          icon="ui-icon-edit" title="Edit"/>
+                                    </p:column>
+                                </p:dataTable> 
+                            </p:dialog>  
   
-    </p:dataTable>  
+                        </h:form>
+                        
+                        <h:form id="mostrarG">
+                                <p:dialog header="Informacion de los pacientes" widgetVar="carDialog" resizable="false" id="carDlg"  
+                                    showEffect="fade" hideEffect="explode" modal="false">  
   
-    <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" id="carDlg"  
-                showEffect="fade" hideEffect="explode" modal="false">  
+                                <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">  
+                                    <h:outputText value="Tipo de identificacion:"/> 
+                                    <h:outputText value="#{persona.persona.tipodocumento}" style="font-weight: bold"/>
+                                    <h:outputText value="Nº identificacion:"/>
+                                    <h:outputText value="#{persona.persona.nrodocumento}" style="font-weight: bold"/>                                 
+                                    <h:outputText value="Nombre:"/>
+                                    <h:outputText value="#{persona.persona.nombres}" style="font-weight: bold"/>
+                                    <h:outputText value="Apellido:"/>
+                                    <h:outputText value="#{persona.persona.apellidos}" style="font-weight: bold"/>
+
+                                    <h:outputText value="Telefono:"/>
+                                    <h:outputText value="#{persona.persona.telefono}" style="font-weight: bold"/>
+                                    <h:outputText value="Direccion:"/>
+                                    <h:outputText value="#{persona.persona.direccion}" style="font-weight: bold"/>
+                                    <h:outputText value="Email:"/>
+                                    <h:outputText value="#{persona.persona.email}" style="font-weight: bold"/> 
+                                </h:panelGrid>  
   
-        <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">  
-  
-            
-  
-            <h:outputText value="Tipo de identificacion:"/> 
-                    <h:outputText value="#{personaBean.persona.tipodocumento}" style="font-weight: bold"/>
-                    <h:outputText value="Nº identificacion:"/>
-                    <h:outputText value="#{personaBean.persona.nrodocumento}" style="font-weight: bold"/>                                 
-                    <h:outputText value="Nombre:"/>
-                    <h:outputText value="#{personaBean.persona.nombres}" style="font-weight: bold"/>
-                    <h:outputText value="Apellido:"/>
-                    <h:outputText value="#{persona.persona.apellidos}" style="font-weight: bold"/>
-                    <h:outputText value="Usuario:"/>
-                    <h:outputText value="#{usuario.usuario.login}"/>
-                    <h:outputText value="Telefono:"/>
-                    <h:outputText value="#{persona.persona.telefono}" style="font-weight: bold"/>
-                    <h:outputText value="Direccion:"/>
-                    <h:outputText value="#{persona.persona.direccion}" style="font-weight: bold"/>
-                    <h:outputText value="Email:"/>
-                    <h:outputText value="#{persona.persona.email}" style="font-weight: bold"/>  
-  
-  
-            
-  
-        </h:panelGrid>  
-  
-    </p:dialog>  
-  
-</h:form>
+                            </p:dialog>
+                        </h:form>
+                        
+                        <h:form id="insertar">
+                            <p:dialog id="medico" header="Nuevo Paciente" widgetVar="dialgpaciente" resizable="false"
+                                showEffect="fade" hideEffect="explode" modal="false">
+                                  
+                                <h:panelGrid  columns="4"  >
+
+                                    <h:outputText value="Nº de identificacion"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.nrodocumento}"/>
+
+                                    <h:outputText value="Tipo de cedula"/>
+                                    <p:selectOneMenu style="width: 140px" value="#{persona.persona.tipodocumento}">
+                                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                                        <f:selectItem itemLabel="CC" itemValue="1"/>
+                                        <f:selectItem itemLabel="CE" itemValue="2"/>
+                                    </p:selectOneMenu>
+
+                                    <h:outputText value="fecha de nacimiento"/>
+
+                                    <p:calendar value="#{persona.persona.fechanacimiento}" />
+                                    <h:outputText value="Nombres"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.nombres}"/>
+
+                                    <h:outputText value="Apellidos"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.apellidos}"/>
+                                    <h:outputText value="Direccion"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.direccion}"/>
+
+                                    <h:outputText value="Telefono"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.telefono}"/>
+                                    <h:outputText value="Email"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.email}"/>
+
+                                    <h:outputText value="ID usuario"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.idusurio}"/>
+                                    <br/>
+                                    <p:commandButton value="Siguiente"  actionListener="#{persona.insertar(actionEvent)}" 
+                                                     oncomplete="dlgesp.show(); dialgpaciente.hide();"/>
+                                </h:panelGrid>
+                            </p:dialog>
+                        </h:form>
+                        
+                        <h:form id="especializacion">
+                            <p:dialog id="espe" header="Espescializacion" widgetVar="dlgesp" resizable="false"   
+                                      appendToBody="" showEffect="fade" hideEffect="explode" modal="false">
+                                <p:growl id="growl" showDetail="true" sticky="true" />
+                                <h:panelGrid columns="2">
+                                    <h:outputText value="ID"/>
+                                    <p:inputText style="140px" value="#{especializacionController.especializacion.id}"/>
+
+                                    <h:outputText value="Nombre"/>
+                                    <p:inputText style="140px" value="#{especializacionController.especializacion.nombre}"/>
+
+                                    <p:commandButton value="Finalizar" 
+                                                     actionListener="#{especializacionController.insertar(actionEvent)}" oncomplete="dlgesp.hide();"/>
+                                 </h:panelGrid>
+                            </p:dialog>
+                        </h:form>
+                        
+                        <h:form id="editPaciente">
+                            <p:dialog id="medico" header="Editar Paciente" widgetVar="dialgedit" resizable="false"
+                                showEffect="fade" hideEffect="explode" modal="false">
+                                <p:growl id="growledit" showDetail="true" sticky="true" />  
+                                <h:panelGrid  columns="4"  >
+
+                                    <h:outputText value="Nº de identificacion"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.nrodocumento}"/>
+
+                                    <h:outputText value="Tipo de cedula"/>
+                                    <p:selectOneMenu style="width: 140px" value="#{persona.persona.tipodocumento}">
+                                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                                        <f:selectItem itemLabel="CC" itemValue="1"/>
+                                        <f:selectItem itemLabel="CE" itemValue="2"/>
+                                    </p:selectOneMenu>
+
+                                    <h:outputText value="fecha de nacimiento"/>
+
+                                    <p:calendar value="#{persona.persona.fechanacimiento}" />
+                                    <h:outputText value="Nombres"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.nombres}"/>
+
+                                    <h:outputText value="Apellidos"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.apellidos}"/>
+                                    <h:outputText value="Direccion"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.direccion}"/>
+
+                                    <h:outputText value="Telefono"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.telefono}"/>
+                                    <h:outputText value="Email"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.email}"/>
+
+                                    <h:outputText value="ID usuario"/>
+                                    <p:inputText style="width: 140px" value="#{persona.persona.idusurio}"/>
+                                    <br/>
+                                    <p:separator/>
+                                    <p:commandButton value="Siguiente"  actionListener="#{persona.actualizar(actionEvent)}" oncomplete="dlgesp.hide();"/>
+                                    <p:commandButton value="Cancelar" oncomplete="dialgmedico.hide();"/>
+                                </h:panelGrid>
+                            </p:dialog>
+                        </h:form>
                         
                     </ui:insert>
                 </p:layoutUnit>

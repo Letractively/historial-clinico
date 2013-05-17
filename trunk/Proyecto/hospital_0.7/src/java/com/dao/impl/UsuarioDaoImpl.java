@@ -29,4 +29,6 @@ public class UsuarioDaoImpl implements UsuarioDao{
         return (Usuario) query.uniqueResult();
     }
     
+    
+    
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="layout.xhtml">
+    <ui:define name="content">
+        <h:body>
+            <h:form id="form">  
+
+                <p:panel header="Nuevo usuario">  
+                    <p:messages id="messages" showDetail="true" autoUpdate="true"/>  
+
+                    <h:panelGrid columns="2" id="igualClave" >  
+                        <h:outputLabel for="clv1" value="Usuario: " />  
+                        <p:inputText value="#{clave.usuario.login}"/>
+
+                        <h:outputLabel for="clv2" value="Clave: " />  
+                        <p:password id="clv2" value="#{clave.usuario.clave}" feedback="true"
+                                    label="Confirmación Clave nueva" required="true"
+                                    promptLabel="Confirma la clave nueva" weakLabel="Bajo"
+                                    goodLabel="Medio" strongLabel="Alto" inline="true" /> 
+                        
+                        <h:outputText value="Estado" />
+                        <p:inputText value="#{clave.usuario.estado}"/>
+
+                        <f:facet name="footer">  
+                            <p:commandButton id="loginButton" value="Ingresar" update="igualClave"   
+                                             actionListener="#{clave.insertar(actionEvent)}" />  
+                        </f:facet>
+                    </h:panelGrid>
+                </p:panel>
+            </h:form> 
+        </h:body>
+    </ui:define>
+</ui:composition>
