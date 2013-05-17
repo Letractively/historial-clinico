@@ -77,7 +77,7 @@ public class implemetacion_persona implements interfaz_persona{
     }
 
     @Override
-    public List<Persona> buscarPersonas() {
+    public List<Persona> buscarPacientes() {
         Session session;
         session = HibernateUtil.getSessionFactory().openSession();
         return  session.createQuery("from Persona").list();

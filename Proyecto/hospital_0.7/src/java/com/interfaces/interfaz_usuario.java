@@ -11,7 +11,7 @@ import com.modelo.Usuario;
  * @author carlos
  */
 public interface interfaz_usuario {
-    public void insertar(Usuario usuario);
+    public void insertar(String usuario,String clave);
     public void actualizar(Usuario usuario);
     public Usuario buscarId(Integer id);
 }

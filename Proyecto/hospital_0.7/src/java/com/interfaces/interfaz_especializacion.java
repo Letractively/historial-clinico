@@ -12,4 +12,5 @@ import com.modelo.Especializacion;
  */
 public interface interfaz_especializacion {
     public void insertar(Especializacion especializacion);
+    public Especializacion buscarId(Integer id);
 }

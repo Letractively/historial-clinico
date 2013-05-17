@@ -44,8 +44,8 @@ import javax.faces.context.FacesContext;
         interfaz_persona ip=new implemetacion_persona();
         ip.insertar(persona);
         FacesContext context = FacesContext.getCurrentInstance();  
-        context.addMessage(null, new FacesMessage("El registro se actualizo exitosamente"));
-        System.out.print("Exito");
+        context.addMessage(null, new FacesMessage("El registro se ingreso exitosamente"));
+        persona=new Persona();
     }
     
     public void prepararActualizar(Integer nrodocumento){
@@ -56,7 +56,7 @@ import javax.faces.context.FacesContext;
         System.out.print("Id"+persona.getId()+"numerodoc"+persona.getNrodocumento());
     }
     
-    public void actualizar(){
+    public void actualizar(ActionEvent actionEvent){
         interfaz_persona ip=new implemetacion_persona();
         ip.actualizar(persona);
         FacesContext context = FacesContext.getCurrentInstance();  
@@ -74,6 +74,8 @@ import javax.faces.context.FacesContext;
 
     public List<Persona> getPersonasPacientes() {
         interfaz_persona ip=new implemetacion_persona();
+        personas=ip.buscarPacientes();
+         System.out.print("Aqui"+personas.size());   
         personas=ip.buscarPersonasPacientes();
         return personas;
     }

@@ -51,4 +51,13 @@ public class especializacionBean implements Serializable {
         this.especializacion = especializacion;
     }
     
+    
+    public void prepararActualizar(Integer id){
+        System.out.print("hOLAAAAAAAAAA "+id);
+        interfaz_especializacion esp=new implementacion_especializacion();
+        especializacion=esp.buscarId(id);
+        //persona=new Persona();
+        
+    }
+    
 }

@@ -8,6 +8,9 @@ import com.dao.ClaveDao;
 import com.dao.UsuarioDao;
 import com.dao.impl.ClaveDaoImpl;
 import com.dao.impl.UsuarioDaoImpl;
+import com.implementacion.implementacion_usuario;
+import com.implementacion.implemetacion_persona;
+import com.interfaces.interfaz_usuario;
 import com.modelo.Usuario;
 import com.util.HibernateUtil;
 import javax.faces.application.FacesMessage;
@@ -20,6 +23,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.primefaces.context.RequestContext;
 
+    
+    
 /**
  *
  * @author Oscar Rada
@@ -27,8 +32,23 @@ import org.primefaces.context.RequestContext;
 @ManagedBean(name = "clave")
 @SessionScoped
 public class ClaveBean {
+    private Usuario usuario;
 
     private String claveNueva;
+    
+    public ClaveBean(){
+        usuario=new Usuario();
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    
 
     public String getClaveNueva() {
         return claveNueva;
@@ -53,4 +73,15 @@ public class ClaveBean {
         }
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
+    
+    public void insertar(ActionEvent actionEvent){
+        
+        interfaz_usuario ip=new implementacion_usuario();
+        ip.insertar(usuario.getLogin(),usuario.getClave());
+        FacesContext context = FacesContext.getCurrentInstance();  
+        context.addMessage(null, new FacesMessage("El registro se ingreso exitosamente"));
+        usuario=new Usuario();
+    }
+        
+    
 }

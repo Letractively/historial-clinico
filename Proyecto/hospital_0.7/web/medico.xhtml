@@ -24,7 +24,7 @@
                     <center><img src="Imagenes/header2.jpg"/></center>
                 </p:layoutUnit>     
                 
-                <p:layoutUnit position="west" size="220" style="width: 150px" resizable="true" collapsible="true">
+                <p:layoutUnit position="west" size="220" style="width: 150px">
                     <h:form >
                         <p:panelMenu style="width: 190px; ">
                             <p:submenu label="Usuarios" >
@@ -32,17 +32,13 @@
                                 <p:menuitem value="pasientes inscritos" icon="ui-icon-bookmark"/>
                             </p:submenu>
                             
-                            <p:submenu label="Administracion" >
+                            <p:submenu label="Administracion">
                                     <p:menuitem value="Medicos" icon="ui-icon-bookmark" outcome="crear_medico.xhtml" />
                                     <p:menuitem value="Paciente" icon="ui-icon-bookmark" outcome="paciente.xhtml"/>
                             </p:submenu>
                             
-                            <p:submenu label="Perfil">
-                                <p:menuitem value="Inicio" icon="ui-icon-home" outcome="layout.xhtml"/>
-                                <p:menuitem value="Nuevo usuario" outcome="nuevousuario.xhtml"/>
-                                <p:menuitem value="Cambiar Clave" icon="ui-icon-key" outcome="cambiarClave.xhtml"/>
-                                <p:menuitem value="Cerrar Sesión" icon="ui-icon-power" actionListener="#{usuarioBean.logout()}" 
-                                            outcome="index.xhtml"/>
+                            <p:submenu label="opcion 3">
+                                
                             </p:submenu>
                         </p:panelMenu>
                     </h:form>  
@@ -51,7 +47,13 @@
                 
                 <p:layoutUnit position="center">
                     <ui:insert name="content">
-                        Welcome
+                       
+                        
+                        
+                        
+                        
+                        
+                        
                     </ui:insert>
                 </p:layoutUnit>
             </p:layout>
@@ -59,3 +61,4 @@
     </f:view>
     
 </html>
+

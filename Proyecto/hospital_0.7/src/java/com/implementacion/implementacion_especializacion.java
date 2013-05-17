@@ -27,4 +27,12 @@ public class implementacion_especializacion implements interfaz_especializacion{
         }
     }
     
+    public Especializacion buscarId(Integer id) {
+        Session session=HibernateUtil.getSessionFactory().openSession();
+        //System.out.print("hOLAAAAAAAAAA");
+        return (Especializacion) session.load(Especializacion.class, id);
+    }
+    
+    
+    
 }
