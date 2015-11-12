@@ -1,0 +1,1 @@
+Desarrollar un producto de Software aplicando los conceptos de ingeniería de Software WEB vistos en clase, aplicando una metodología de trabajo incremental por ciclos de programación siguiendo los lineamientos establecidos por UWE.
